@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { nomesAlimentos } from "../types";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
+import styles from "./CalculadoraChurrasco.module.css";
 
 const esquemaValidacao = Yup.object().shape({
     pessoas: Yup.number().min(1, "Número de pessoas é obrigatório."),
@@ -18,7 +19,7 @@ const CalculadoraChurrasco = () => {
   const navigate = useNavigate();
 
   return (
-    <div>
+    <div className={styles.container}>
       <Formik
         initialValues={{ pessoas: 0, selecaoAlimentos: [] }}
         validationSchema={esquemaValidacao}
@@ -33,10 +34,14 @@ const CalculadoraChurrasco = () => {
       >
         {({ errors, touched }) => (
           <Form>
-            <div>
-              <label htmlFor="pessoas">Número de pessoas:</label>
+            <div className={styles.inputGroup}>
+              <label htmlFor="pessoas" className={styles.inputLabel}>
+                Número de pessoas:
+              </label>
               <Field name="pessoas" type="number" />
-              {errors.pessoas && touched.pessoas ? (<p>{errors.pessoas}</p>) : null}
+              {errors.pessoas && touched.pessoas ? (
+                <p className={styles.error}>{errors.pessoas}</p>
+              ) : null}
             </div>
             <h2>Selecione os alimentos para o Churrasco:</h2>
             {Object.keys(nomesAlimentos).map((alimento) => (
@@ -45,8 +50,12 @@ const CalculadoraChurrasco = () => {
                 <label htmlFor="selecaoAlimentos">{nomesAlimentos[alimento]}</label>
               </div>
             ))}
-            {errors.selecaoAlimentos && touched.selecaoAlimentos ? (<p>{errors.selecaoAlimentos}</p>) : null}
-            <button type="submit">Calcular</button>
+            {errors.selecaoAlimentos && touched.selecaoAlimentos ? (
+              <p className={styles.error}>{errors.selecaoAlimentos}</p>
+            ) : null}
+            <button type="submit" className={styles.calculateButton}>
+              Calcular
+            </button>
           </Form>
         )}
       </Formik>
