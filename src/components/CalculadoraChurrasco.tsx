@@ -5,14 +5,14 @@ import * as Yup from "yup";
 import styles from "./CalculadoraChurrasco.module.css";
 
 const esquemaValidacao = Yup.object().shape({
-    pessoas: Yup.number().min(1, "Número de pessoas é obrigatório."),
-    selecaoAlimentos: Yup.array()
-    .of(Yup.string())
-    .test(
-      "check-selecaoAlimentos",
-      "Selecione pelo menos um alimento.",
-      (array) => array !== null && array!.length > 0
-    ),
+  pessoas: Yup.number().min(1, "Número de pessoas é obrigatório."),
+  selecaoAlimentos: Yup.array()
+  .of(Yup.string())
+  .test(
+    "check-selecaoAlimentos",
+    "Selecione pelo menos um alimento.",
+    (array) => array !== null && array!.length > 0
+  ),
 });
 
 const CalculadoraChurrasco = () => {
@@ -49,7 +49,7 @@ const CalculadoraChurrasco = () => {
             </div>
             <h2>Selecione os alimentos para o Churrasco:</h2>
             {Object.keys(nomesAlimentos).map((alimento) => (
-              <div>
+              <div key={alimento}>
                 <Field 
                   type="checkbox" 
                   name="selecaoAlimentos" 
