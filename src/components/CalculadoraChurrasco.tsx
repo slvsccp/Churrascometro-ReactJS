@@ -38,7 +38,11 @@ const CalculadoraChurrasco = () => {
               <label htmlFor="pessoas" className={styles.inputLabel}>
                 Número de pessoas:
               </label>
-              <Field name="pessoas" type="number" />
+              <Field 
+                name="pessoas" 
+                type="number"
+                className={styles.inputField}
+              />
               {errors.pessoas && touched.pessoas ? (
                 <p className={styles.error}>{errors.pessoas}</p>
               ) : null}
@@ -46,7 +50,12 @@ const CalculadoraChurrasco = () => {
             <h2>Selecione os alimentos para o Churrasco:</h2>
             {Object.keys(nomesAlimentos).map((alimento) => (
               <div>
-                <Field type="checkbox" name="selecaoAlimentos" value={alimento} />
+                <Field 
+                  type="checkbox" 
+                  name="selecaoAlimentos" 
+                  value={alimento}
+                  className={styles.checkboxInput}
+                />
                 <label htmlFor="selecaoAlimentos">{nomesAlimentos[alimento]}</label>
               </div>
             ))}
