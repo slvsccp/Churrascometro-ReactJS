@@ -1,6 +1,7 @@
-![image](https://github.com/user-attachments/assets/09361ddf-74df-4b20-8f09-2c076729648f)# React + TypeScript + Vite
+# React + TypeScript + Vite
 
 # Churrascometro
+
 ## Página inicial
 ![image](https://github.com/user-attachments/assets/6bfeb8e4-b74a-4fb2-89a4-e37e887a4d80)
 
